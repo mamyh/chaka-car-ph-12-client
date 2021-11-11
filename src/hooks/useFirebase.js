@@ -10,15 +10,15 @@ const useFirebase = () => {
     const auth = getAuth();
     const signInWithGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
-        return signInWithPopup(auth, googleProvider).then((result) => setUser(result.user)).catch((error) => setError(error.message));
+        signInWithPopup(auth, googleProvider).then((result) => setUser(result.user)).catch((error) => setError(error.message));
     }
 
     const registration = (email, password, name) => {
-        return createUserWithEmailAndPassword(auth, email, password).then((result) => { setUser(result.user); updateProfile(auth.currentUser, { displayName: name }) }).catch((error) => setError(error.message));
+        createUserWithEmailAndPassword(auth, email, password).then((result) => { setUser(result.user); updateProfile(auth.currentUser, { displayName: name }) }).catch((error) => setError(error.message));
     }
 
     const loginWithEmailPassword = (email, password, location, history) => {
-        return signInWithEmailAndPassword(auth, email, password).then(result => {
+        signInWithEmailAndPassword(auth, email, password).then(result => {
             console.log(location);
             setUser(result.user)
         }).catch(error => setError(error.message));
