@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth';
 
 const NavLink = ({ myClass = null }) => {
-    const { user, logOut } = useAuth();
+    const { user, logout } = useAuth();
     let myModifiedClass = myClass ? myClass : "hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium";
     return (
         <div>
@@ -43,7 +43,7 @@ const NavLink = ({ myClass = null }) => {
                 >
                     {user.displayName}
                 </Link>
-                <button onClick={logOut} className={myModifiedClass}>Logout</button>
+                <button onClick={logout} className={myModifiedClass}>Logout</button>
             </> : <> <Link
                 to="/login"
                 className={myModifiedClass}
