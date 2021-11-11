@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Solimuddin Molla",
+        "img": "../images/doctors/doctor1.jpg",
+        "profession": "Cardiologist & Surgeon",
+        "desc": "Cardiologists also perform procedures, such as heart catheterizations, angioplasty (inserting balloons in arteries to clear them), and placing stents to keep arteries open. Cardiothoracic Surgeons generally"
+    },
+    {
+        "id": 2,
+        "name": "Sokina Khatun",
+        "img": "../images/doctors/doctor2.jpg",
+        "profession": "Gynecologist & Surgeon",
+        "desc": "The Department of Obstetrics & Gynaecology of Evercare Hospital Dhaka provides comprehensive services to women in the treatment and management of gynaecologic and obstetric conditions – from routine care to complex high-risk situations. We treat variety of problems of female reproductive organs and utilize minimally invasive laparoscopic surgeries and laser surgeries"
+    },
+    {
+        "id": 3,
+        "name": "Morjiza Shajadi",
+        "img": "../images/doctors/doctor3.jpg",
+        "profession": "Dentist",
+        "desc": "The team approach to dentistry promotes continuity of care that is comprehensive, convenient, cost effective and efficient. Members of the team include dental assistants, lab technicians and dental hygienists. Leading the team is the dentist, a doctor specializing in oral health who has earned either a Doctor of Dental Medicine (DMD) degree or a Doctor of Dental Surgery (DDS) degree, which are essentially the same"
+    },
+    {
+        "id": 4,
+        "name": "Hasina Shekh",
+        "img": "https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip",
+        "profession": "Nurologist",
+        "desc": "Neurology is the branch of medicine concerned with the study and treatment of disorders of the nervous system. The nervous system is a complex, sophisticated system that regulates and coordinates body activities. "
+    },
+    {
+        "id": 5,
+        "name": "Joshim Uddin",
+        "img": "../images/doctors/doctor4.jpg",
+        "profession": "surgian",
+        "desc": "The Department of Obstetrics & Gynaecology of Evercare Hospital Dhaka provides comprehensive services to women in the treatment and management of gynaecologic and obstetric conditions – from routine care to complex high-risk situations."
+    },
+    {
+        "id": 6,
+        "name": "Chan Fuan",
+        "img": "https://24g7qf3sa1s81fsal41m8ud9-wpengine.netdna-ssl.com/wp-content/uploads/national-doctors-day-1-920x518.jpg",
+        "profession": "Heartlogy",
+        "desc": "Members of the team include dental assistants, lab technicians and dental hygienists. Leading the team is the dentist, a doctor specializing in oral health who has earned either a Doctor of Dental Medicine (DMD) degree or a Doctor of Dental Surgery (DDS) degree, which are essentially the same"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Outdoor Checkup",
+        "img": "../images/services/outdoorck.jpg",
+        "desc": "In his 2005 book, “Last Child in the Woods,” Richard Louv wrote about what he called nature-deficit disorder, and cited about 60 scientific studies looking at the benefits of nature and the problems that can come from being too isolated from the natural world. Today, Mr. Louv said, there are more than 700 studies"
+    },
+    {
+        "id": 2,
+        "name": "Ambulance and secial care",
+        "img": "../images/services/ambulance.jpg",
+        "desc": "for some states, the website allows a doctor to search for parks near a family’s home address, or with particular available amenities, and write a specific prescription, with the name of the park, the activity, the duration, the frequency."
+    },
+    {
+        "id": 3,
+        "name": "Diagnostic Tests",
+        "img": "../images/services/diagnostic.jpg",
+        "desc": "As per doctor’s prescribed, Free blood sample collection at home by nearby NABL ISO 9001 Certified Labs. We also offer free Comprehensive Full Body Health Checkups worth Rs.4999 once in a year"
+    },
+    {
+        "id": 4,
+        "name": "Fitness Assistance",
+        "img": "../images/services/fitness-assis.jpg",
+        "desc": "Personal fitness trainers at home to assess the level of physical fitness and help them set and reach their fitness goals which includes aerobic exercise, stretching, muscle conditioning, or meditation."
+    },
+    {
+        "id": 5,
+        "name": "Health Monitoring",
+        "img": "../images/services/health-monitor.jpg",
+        "desc": "We provide regular health checkups by doctor includes: Assessments of blood pressure, cholesterol level, weight, Blood, urine, vision, and hearing tests to evaluate overall health."
+    },
+    {
+        "id": 6,
+        "name": "Pain Management ",
+        "img": "../images/services/pain-manag.jpg",
+        "desc": "There are many treatment options like Lifestyle changes, physical therapy, counseling – in addition to medication or surgery, these can also bring pain relief. Get treated in the comfort of your home, by certified, specialized and experienced physiotherapists."
+    }
+]
