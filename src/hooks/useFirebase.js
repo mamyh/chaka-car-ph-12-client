@@ -5,6 +5,7 @@ import initializingApp from "../firebase/firebase.init";
 initializingApp();
 const useFirebase = () => {
     const [user, setUser] = useState({});
+    const [isAdmin, setIsAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('');
 
@@ -15,7 +16,7 @@ const useFirebase = () => {
 
             const destination = location?.state?.from?.state || '/';
             setUser(result.user);
-            console.log(destination);
+            saveUser(auth.currentUser.email, auth.currentUser.displayName, 'POST');
             history.push(destination);
 
         }).catch((error) => setError(error.message));
@@ -24,7 +25,12 @@ const useFirebase = () => {
     const registration = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password).then((result) => {
             setUser(result.user);
-            updateProfile(auth.currentUser, { displayName: name }).then(() => history.push('/'))
+            updateProfile(auth.currentUser, { displayName: name }).then(() => {
+
+                saveUser(auth.currentUser.email, auth.currentUser.displayName, 'POST');
+                history.push('/');
+
+            })
         }).catch((error) => setError(error.message));
     }
 
@@ -40,7 +46,31 @@ const useFirebase = () => {
     const logout = () => {
         signOut(auth).then(() => setUser({})).catch((error) => setError(error.message)).finally(() => setIsLoading(false));
     }
-
+    //save(post of put) the user
+    const saveUser = (email, displayName, method) => {
+        const data = { email, displayName };
+        console.log(data);
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json()).then(data => console.log(data))
+    }
+    //chck if then logged in user is admin
+    useEffect(() => {
+        fetch('http://localhost:5000/users/admin', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: user.email })
+        }).then(res => res.json()).then(data => {
+            setIsAdmin(data.isAdmin);
+        });
+    }, [user.email]);
+    //observer
     useEffect(() => {
         const unSubscriber = onAuthStateChanged(auth, user => {
             if (user) {
@@ -56,7 +86,7 @@ const useFirebase = () => {
         return () => unSubscriber;
     }, [auth]);
     return {
-        user, isLoading, error, registration, login, signInWithGoogle, logout
+        user, isLoading, error, isAdmin, registration, login, signInWithGoogle, logout
     }
 }
 

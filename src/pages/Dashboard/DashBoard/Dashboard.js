@@ -1,12 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+
 import useAuth from '../../../hooks/useAuth';
 import "./Dashboard.css";
+import {
+
+    Switch,
+    Route,
+    Link,
+
+    useRouteMatch
+} from "react-router-dom";
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+
 
 const Dashboard = () => {
 
-    const { user, logout } = useAuth();
+    const { user, logout, isAdmin } = useAuth();
+    let { path, url } = useRouteMatch();
 
+    console.log('path', path, 'url', url);
 
     return (
         <div>
@@ -19,30 +31,43 @@ const Dashboard = () => {
                 </div>
                 <nav className="text-white text-base font-semibold pt-3">
                     {
-                        user?.email ? <> <Link to="index.html" className="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                        user?.email && !isAdmin && <> <Link to={`${url}/myorders`} className="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                             <i className="fas fa-tachometer-alt mr-3"></i>
                             My Orders
                         </Link>
-                            <Link to="blank.html" className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                            <Link to={`${url}/review`} className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                                 <i className="fas fa-sticky-note mr-3"></i>
-                                Blank Page
-                            </Link></> : <>
-                            <Link to="index.html" className="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
-                                <i className="fas fa-tachometer-alt mr-3"></i>
-                                Dashboard
+                                Review
                             </Link>
-                            <Link to="blank.html" className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                            <Link to={`${url}/pay`} className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                                 <i className="fas fa-sticky-note mr-3"></i>
-                                Blank Page
+                                Pay
                             </Link></>
+                    }
+                    {
+                        user.email && isAdmin && (<>
+                            <Link to={`${url}/manageallorders`} className="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                                <i className="fas fa-tachometer-alt mr-3"></i>
+                                Manage All Orders
+                            </Link>
+                            <Link to={`${url}/makeadmin`} className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                                <i className="fas fa-sticky-note mr-3"></i>
+                                Make Admin
+                            </Link>
+                            <Link to={`${url}/addproduct`} className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                                <i className="fas fa-sticky-note mr-3"></i>
+                                Add a Product
+                            </Link>
+                            <Link to={`${url}/manageproducts`} className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                                <i className="fas fa-sticky-note mr-3"></i>
+                                Manage products
+                            </Link>
+                        </>)
                     }
                     <button className="flex w-full items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item" onClick={logout}>Logout</button>
 
                 </nav>
-                <Link to="#" className="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
-                    <i className="fas fa-arrow-circle-up mr-3"></i>
-                    Upgrade to Pro!
-                </Link>
+
             </aside>
 
             <div className="w-4/5 ml-auto flex flex-col h-screen overflow-y-hidden">
@@ -88,6 +113,24 @@ const Dashboard = () => {
                 </div>
 
             </div >
+            <Switch>
+                <Route exact path={path}>
+                    <h3>Please select a topic.</h3>
+                </Route>
+                <Route exact path={`${path}/pay`}>
+
+                </Route>
+                <Route exact path={`${path}/review`}>
+
+                </Route>
+                <Route exact path={`${path}/myorders`}>
+
+                </Route>
+                <Route exact path={`${path}/makeadmin`}>
+                    <MakeAdmin></MakeAdmin>
+                </Route>
+
+            </Switch>
 
         </div >
     )
