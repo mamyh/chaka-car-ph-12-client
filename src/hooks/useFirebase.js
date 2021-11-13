@@ -6,41 +6,46 @@ initializingApp();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isAdmin, setIsAdmin] = useState(false);
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
     const auth = getAuth();
     const signInWithGoogle = (location, history) => {
+        setIsLoading(true);
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider).then((result) => {
 
-            const destination = location?.state?.from?.state || '/';
+            const destination = location?.state?.from?.state || '/dashboard';
             setUser(result.user);
             saveUser(auth.currentUser.email, auth.currentUser.displayName, 'POST');
             history.push(destination);
 
-        }).catch((error) => setError(error.message));
+        }).catch((error) => setError(error.message)).finally(() => setIsLoading(false));
     }
 
     const registration = (email, password, name, history) => {
+        setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password).then((result) => {
             setUser(result.user);
             updateProfile(auth.currentUser, { displayName: name }).then(() => {
 
                 saveUser(auth.currentUser.email, auth.currentUser.displayName, 'POST');
-                history.push('/');
+                history.push('/dashboard');
 
             })
-        }).catch((error) => setError(error.message));
+        }).catch((error) => setError(error.message)).finally(() => setIsLoading(false));
     }
 
     const login = (email, password, location, history) => {
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password).then(result => {
-            const destination = location?.state?.from || '/';
-            console.log(destination)
+            const destination = location?.state?.from || '/dashboard';
             setUser(result.user);
             history.push(destination);
-        }).catch(error => setError(error.message));
+        }).catch(error => {
+            setError(error.message);
+            setIsLoading(false);
+        });
     }
 
     const logout = () => {
@@ -60,6 +65,7 @@ const useFirebase = () => {
     }
     //chck if then logged in user is admin
     useEffect(() => {
+        setIsLoading(true);
         fetch('http://localhost:5000/users/admin', {
             method: 'POST',
             headers: {
@@ -67,19 +73,26 @@ const useFirebase = () => {
             },
             body: JSON.stringify({ email: user.email })
         }).then(res => res.json()).then(data => {
-            setIsAdmin(data.isAdmin);
+            if (data.role === 'admin') {
+
+                setIsAdmin(true);
+
+            }
+            setIsLoading(false)
         });
     }, [user.email]);
     //observer
     useEffect(() => {
         const unSubscriber = onAuthStateChanged(auth, user => {
+            setIsLoading(true);
             if (user) {
                 var newUser = auth.currentUser;
 
                 setUser(newUser);
 
             } else {
-                setUser({})
+                setUser({});
+
             }
             setIsLoading(false);
         })

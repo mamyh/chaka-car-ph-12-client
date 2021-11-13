@@ -18,10 +18,7 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        // const name = e.target[0].value;
-        // const email = e.target[1].value;
-        // const password = e.target[2].value;
-        // const cpassword = e.target[3].value;
+
         if (userInfo.password.length < 6) {
             setUserError('password must be 6 or more than 6 character');
             return;

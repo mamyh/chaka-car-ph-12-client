@@ -20,7 +20,7 @@ function App() {
   return (
     <AuthContext>
       <BrowserRouter>
-        <Header></Header>
+
         <Switch>
           <Route exact path="/">
             <Home></Home>
@@ -42,7 +42,7 @@ function App() {
             <Notfound></Notfound>
           </Route>
         </Switch>
-        <Footer></Footer>
+
       </BrowserRouter>
     </AuthContext >
   );

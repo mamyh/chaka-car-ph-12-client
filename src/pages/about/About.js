@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../shared/Footer/Footer'
+import Header from '../shared/Header/Header'
 
 const About = () => {
-    return (
+    return (<>
+        <Header></Header>
         <div className="h-screen">
             <div className="h-1/2 bg-cover md:flex items-center justify-center text-white" style={{ backgroundImage: `url(http://www.dotage.in/wp-content/uploads/2016/10/image-3.jpg)` }}>
                 <div >
@@ -18,6 +21,8 @@ const About = () => {
                 <p> Healthcare is the fulfillment of the special needs and requirements that are unique to senior citizens. We believe that it is our duty to care for our elders responsibly, to treat them with dignity, and to provide them with the highest level of care possible.</p>
             </div>
         </div >
+        <Footer></Footer>
+    </>
     )
 }
 

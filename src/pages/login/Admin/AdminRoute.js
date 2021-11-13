@@ -1,10 +1,12 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router'
-import useAuth from '../hooks/useAuth';
-import Spinner from '../pages/shared/Spinner/Spinner';
+import useAuth from '../../../hooks/useAuth';
+import Spinner from '../../shared/Spinner/Spinner';
 
-const PrivateRoute = ({ children, ...rest }) => {
-    let { user, isLoading } = useAuth();
+
+
+const AdminRoute = ({ children, ...rest }) => {
+    let { user, isLoading, isAdmin } = useAuth();
 
     if (isLoading) {
         return (
@@ -15,12 +17,12 @@ const PrivateRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) =>
-                user.email ? (
+                (user?.email && isAdmin) ? (
                     children
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/login",
+                            pathname: "/dashboard",
                             state: { from: location }
                         }}
                     />
@@ -30,4 +32,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     );
 }
 
-export default PrivateRoute;
+export default AdminRoute;

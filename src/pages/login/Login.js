@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Alert from '../shared/Alert/Alert';
+import Spinner from '../shared/Spinner/Spinner';
 
 const Login = () => {
     const location = useLocation();
-    const { login, error, signInWithGoogle } = useAuth();
+    const { login, error, isLoading, signInWithGoogle } = useAuth();
     const history = useHistory()
     const [info, setInfo] = useState({})
     const [loginError, setLoginError] = useState('');
 
+
+    if (isLoading) {
+        return <Spinner></Spinner>
+    }
     const handleLoginWithGoogle = () => {
         signInWithGoogle(location, history);
     }
@@ -21,22 +27,29 @@ const Login = () => {
         setInfo(newInfo)
     }
     const handleLoginWithEmail = (e) => {
+        setLoginError('');
         e.preventDefault();
-        // const email = e.target[0].value;
-        // const password = e.target[1].value;
-
+        console.log('error', error);
+        if (!info.email || !info.password) {
+            setLoginError('Email or Password field can not be empty!');
+            return;
+        }
 
         if (error) {
             setLoginError(error);
             return;
         }
-        console.log(info);
+
+
         login(info.email, info.password, location, history);
     }
+
+
     return (
         <div className="h-screen md:flex justify-center items-center">
 
             <div>
+
                 <form className="w-full max-w-sm" onSubmit={handleLoginWithEmail}>
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
@@ -68,9 +81,10 @@ const Login = () => {
                         </div>
                     </div>
                 </form>
-                <div className="text-center">
+                <div className="text-center mb-8">
                     <button onClick={handleLoginWithGoogle} className="shadow inline-block ml-16 my-5 bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">Sign in with google </button>
                 </div>
+                {loginError && <Alert message={loginError} type="danger"></Alert>}
             </div>
 
         </div>
