@@ -2,7 +2,7 @@ import React from 'react'
 
 const DashboardHome = () => {
     return (
-        <div className="w-4/5 ml-auto flex flex-col h-screen overflow-y-hidden">
+        <div className="w-3/4 ml-auto flex flex-col h-screen overflow-y-hidden">
 
             <div className="w-full overflow-x-hidden border-t flex flex-col">
                 <main className="w-full flex-grow p-6">

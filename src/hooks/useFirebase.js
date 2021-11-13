@@ -66,19 +66,12 @@ const useFirebase = () => {
     //chck if then logged in user is admin
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://localhost:5000/users/admin', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ email: user.email })
-        }).then(res => res.json()).then(data => {
+        setIsAdmin(false);
+        fetch(`http://localhost:5000/users/admin?email=${user.email}`).then(res => res.json()).then(data => {
             if (data.role === 'admin') {
-
                 setIsAdmin(true);
-
             }
-            setIsLoading(false)
+            setIsLoading(false);
         });
     }, [user.email]);
     //observer
@@ -87,12 +80,9 @@ const useFirebase = () => {
             setIsLoading(true);
             if (user) {
                 var newUser = auth.currentUser;
-
                 setUser(newUser);
-
             } else {
                 setUser({});
-
             }
             setIsLoading(false);
         })

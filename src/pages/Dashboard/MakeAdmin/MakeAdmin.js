@@ -27,7 +27,7 @@ const MakeAdmin = () => {
 
     }
     return (
-        <div>
+        <div className="w-3/4 ml-auto">
             <h1>Make an Admin</h1>
             <form onSubmit={handleSubmit}>
                 <input className="bg-gray-200 appearance-none border-2 border-gray-200 mr-4 rounded w-1/3 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="email" value={email} />

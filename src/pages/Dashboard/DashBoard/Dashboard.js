@@ -13,6 +13,12 @@ import {
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../login/Admin/AdminRoute';
 import DashboardHome from '../DashboardHome/DashboardHome';
+import ManageOrders from '../ManageOrders/ManageOrders';
+import MangeProducts from '../ManageProducts/MangeProducts';
+import AddProduct from '../AddProduct/AddProduct';
+import Pay from '../withoutAdmin/Pay/Pay';
+import Review from '../withoutAdmin/Review/Review';
+import Orders from '../withoutAdmin/Orders/Orders';
 
 
 const Dashboard = () => {
@@ -20,7 +26,7 @@ const Dashboard = () => {
     const { user, logout, isAdmin } = useAuth();
     let { path, url } = useRouteMatch();
 
-    console.log('path', path, 'url', url);
+
 
     return (
         <div>
@@ -78,16 +84,25 @@ const Dashboard = () => {
                     <DashboardHome></DashboardHome>
                 </Route>
                 <Route exact path={`${path}/pay`}>
-
+                    <Pay></Pay>
                 </Route>
                 <Route exact path={`${path}/review`}>
-
+                    <Review></Review>
                 </Route>
                 <Route exact path={`${path}/myorders`}>
-
+                    <Orders></Orders>
                 </Route>
                 <AdminRoute exact path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute exact path={`${path}/manageallorders`}>
+                    <ManageOrders></ManageOrders>
+                </AdminRoute>
+                <AdminRoute exact path={`${path}/manageproducts`}>
+                    <MangeProducts></MangeProducts>
+                </AdminRoute>
+                <AdminRoute exact path={`${path}/addproduct`}>
+                    <AddProduct></AddProduct>
                 </AdminRoute>
 
             </Switch>

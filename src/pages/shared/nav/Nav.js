@@ -15,7 +15,7 @@ function Nav() {
                             <div className="flex-shrink-0">
                                 <img
                                     className="h-8 w-8"
-                                    src="https://i.fbcd.co/products/resized/resized-750-500/be85cc684b308f4c15eb024f2dfdf16a59a157c4f947c60a30e6c6a187765107.webp"
+                                    src="https://unicoderbd.com/theme/html/chaka/assets/images/logo/1.png"
                                     alt="Workflow"
                                 />
                             </div>

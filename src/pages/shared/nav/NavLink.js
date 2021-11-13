@@ -25,7 +25,7 @@ const NavLink = ({ myClass = null }) => {
             {user.email ? <>
 
                 <Link
-                    to="/explore"
+                    to="/explores"
                     className={myModifiedClass}
                 >
                     Explores
