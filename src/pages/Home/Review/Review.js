@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import Spinner from '../../shared/Spinner/Spinner';
 
 const Review = () => {
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    const [isLoadin, setIsLoadin] = useState(false);
     useEffect(() => {
+        setIsLoadin(true);
         fetch('http://localhost:5000/reviews').then(res => res.json()).then(data => {
             const newData = data.slice(0, 3);
-            setReviews(data);
+            setReviews(newData);
+            setIsLoadin(false);
         })
     }, []);
+    if (isLoadin) {
+        return <Spinner></Spinner>
+    }
     return (
         <>
 
@@ -16,7 +23,7 @@ const Review = () => {
                     <h1 className="text-center text-2xl text-yellow-600 font-bold my-8 border-current border-b pb-2 inline-block">here is our client reviews</h1>
                     <div className="md:grid grid-cols-3 gap-6">
                         {reviews.map(review => (
-                            <div key={review._id} className="bg-white hover:shadow-lg rounded-md mb-8">
+                            <div key={review._id} className="bg-white border border-gray-200 hover:shadow-lg rounded-md mb-8">
 
                                 <div className="flex justify-between my-8 px-4">
                                     <div className="space-y-4">

@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../shared/Footer/Footer'
 import Header from '../shared/Header/Header'
+import Spinner from '../shared/Spinner/Spinner'
 
 const Explores = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
+        setIsLoading(true);
         fetch('http://localhost:5000/products').then(res => res.json()).then(data => {
             setProducts(data);
-        })
+            setIsLoading(false);
+        });
     }, []);
+    if (isLoading) {
+        return <Spinner></Spinner>
+    }
     return (
         <>
             <Header></Header>
@@ -18,7 +25,7 @@ const Explores = () => {
                     <h1 className="text-center text-2xl text-yellow-600 font-bold my-8 border-current border-b pb-2 inline-block">here is our all Dream Cars</h1>
                     <div className="md:grid grid-cols-3 gap-6">
                         {products.map(product => (
-                            <div key={product._id} className="bg-white hover:shadow-lg rounded-md mb-8">
+                            <div key={product._id} className="bg-white border border-gray-200 hover:shadow-lg rounded-md mb-8">
                                 <div className="w-full">
                                     <img className="w-full" src={product.image} alt="pakage " />
                                 </div>

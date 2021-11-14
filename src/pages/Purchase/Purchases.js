@@ -37,7 +37,7 @@ const Purchases = () => {
             <Header></Header>
             {isSuccess && <Alert message="Orders are completed .please pay the bill in Payment section on your database" type="success"></Alert>}
             <div className="h-screen flex items-center justify-center">
-                <div className="bg-white w-full md:w-3/5 hover:shadow-lg space-x-4 rounded-md md:flex">
+                <div className="bg-white border border-gray-200 w-full md:w-3/5 hover:shadow-lg space-x-4 rounded-md md:flex">
                     <div className=" flex-none w-full md:w-1/2">
                         <img className="w-full" src={image} alt="pakage " />
                     </div>
