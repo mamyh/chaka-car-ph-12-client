@@ -10,7 +10,7 @@ const Banner = () => {
                     <h1 className="text-3xl font-bold text-white">We set the Standards <span className="block" >Others try to Live up</span></h1>
 
                     <div className="my-8 w-screen md:w-full space-x-8">
-                        <Link className=" inline-block rounded-lg border-2 bg-transparent border-current text-white w-1/4" to="/explore">Explore</Link>
+                        <Link className=" inline-block rounded-lg border-2 bg-transparent border-current text-white w-1/4" to="/explores">Explore</Link>
                     </div>
 
                 </div>

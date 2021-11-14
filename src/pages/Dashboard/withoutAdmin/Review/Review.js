@@ -30,7 +30,7 @@ const Review = () => {
     }
     return (
         <div className="w-3/4 ml-auto">
-            <form onSubmit={handleSubmit} className="space-y-4 w-1/3 my-8">
+            <form onSubmit={handleSubmit} className="space-y-4 w-1/3 mb-8">
                 <input defaultValue={user.displayName} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" disabled />
                 <input defaultValue={user.email} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="email" disabled />
                 <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Rate" onBlur={handleBlur} name="rating" type="number" />

@@ -6,6 +6,7 @@ const ManageOrders = () => {
     useEffect(() => {
         fetch('https://infinite-plains-05304.herokuapp.com/orders').then(res => res.json()).then(data => {
             setOrders(data);
+            
         })
     }, [isSuccess]);
     const handleApproved = (id) => {
