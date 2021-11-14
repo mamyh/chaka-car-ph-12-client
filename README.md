@@ -1,6 +1,9 @@
-#`My Health care React application `
+#`My Car Seller  React application `
  
- live demo is [ link ]https://healthcarereactassignments.netlify.app/
+ live demo is [demo-link]https://my-car-project-b6659.web.app/
+ server side demo [demo-link]https://infinite-plains-05304.herokuapp.com/
+ client side code [github-client-code]https://github.com/programming-hero-web-course-4/niche-website-client-side-mamyh
+ server side code [github-server-code]https://github.com/programming-hero-web-course-4/niche-website-server-side-mamyh
 
 ------------------------------
  #`used technology `
@@ -12,6 +15,8 @@
 - Retrive data from a json file 
 - custom hooks
 - private route 
+- nested route 
+- dashboard
 - page redirect 
 - responsive design 
 - tailwind css 
