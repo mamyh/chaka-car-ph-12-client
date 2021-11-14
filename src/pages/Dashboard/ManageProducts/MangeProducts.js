@@ -5,14 +5,14 @@ const MangeProducts = () => {
     const [products, setProducts] = useState([]);
     const [isSuccess, setIsSuccess] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/products').then(res => res.json()).then(data => {
+        fetch('https://infinite-plains-05304.herokuapp.com/products').then(res => res.json()).then(data => {
             setProducts(data);
         })
     }, [isSuccess]);
     const handleDelete = (id) => {
         const confirmation = window.confirm('Are you sure ? you want to delete');
         if (confirmation) {
-            const url = `http://localhost:5000/products/${id}`
+            const url = `https://infinite-plains-05304.herokuapp.com/products/${id}`
             fetch(url, {
                 method: 'DELETE',
 

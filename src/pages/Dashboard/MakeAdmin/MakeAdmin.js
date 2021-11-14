@@ -11,7 +11,7 @@ const MakeAdmin = () => {
         const data = { creator: user.email, newAdmin: newEmail };
         console.log(data);
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://infinite-plains-05304.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

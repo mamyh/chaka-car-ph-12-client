@@ -23,7 +23,7 @@ const AddProduct = () => {
             return;
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://infinite-plains-05304.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

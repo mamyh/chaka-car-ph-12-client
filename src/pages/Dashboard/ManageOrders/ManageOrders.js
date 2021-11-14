@@ -4,12 +4,12 @@ const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isSuccess, setIsSuccess] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/orders').then(res => res.json()).then(data => {
+        fetch('https://infinite-plains-05304.herokuapp.com/orders').then(res => res.json()).then(data => {
             setOrders(data);
         })
     }, [isSuccess]);
     const handleApproved = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://infinite-plains-05304.herokuapp.com/orders/${id}`, {
             method: 'PUT'
         }).then(res => res.json()).then(data => {
             if (data.modifiedCount === 1) {
@@ -20,7 +20,7 @@ const ManageOrders = () => {
     const handleDelete = (id) => {
         const confirmation = window.confirm('Are you sure ? you want to delete');
         if (confirmation) {
-            const url = `http://localhost:5000/orders/${id}`
+            const url = `https://infinite-plains-05304.herokuapp.com/orders/${id}`
             fetch(url, {
                 method: 'DELETE',
 

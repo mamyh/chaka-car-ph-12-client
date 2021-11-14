@@ -11,7 +11,7 @@ const Purchases = () => {
     const { id } = useParams();
     const [isSuccess, setIsSuccess] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`).then(res => res.json()).then(data => {
+        fetch(`https://infinite-plains-05304.herokuapp.com/products/${id}`).then(res => res.json()).then(data => {
             setProduct(data);
         })
     }, []);
@@ -19,7 +19,7 @@ const Purchases = () => {
         const { _id, ...orders } = product;
         orders.email = user.email;
         orders.status = 'pending';
-        fetch('http://localhost:5000/orders', {
+        fetch('https://infinite-plains-05304.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ const MyCars = () => {
     const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://localhost:5000/products').then(res => res.json()).then(data => {
+        fetch('https://infinite-plains-05304.herokuapp.com/products').then(res => res.json()).then(data => {
             const newData = data.slice(0, 6);
             setProducts(newData);
             setIsLoading(false);

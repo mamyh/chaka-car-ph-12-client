@@ -55,7 +55,7 @@ const useFirebase = () => {
     const saveUser = (email, displayName, method) => {
         const data = { email, displayName };
         console.log(data);
-        fetch('http://localhost:5000/users', {
+        fetch('https://infinite-plains-05304.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +67,7 @@ const useFirebase = () => {
     useEffect(() => {
         setIsLoading(true);
         setIsAdmin(false);
-        fetch(`http://localhost:5000/users/admin?email=${user.email}`).then(res => res.json()).then(data => {
+        fetch(`https://infinite-plains-05304.herokuapp.com/users/admin?email=${user.email}`).then(res => res.json()).then(data => {
             if (data.role === 'admin') {
                 setIsAdmin(true);
             }

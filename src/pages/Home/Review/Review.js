@@ -6,7 +6,7 @@ const Review = () => {
     const [isLoadin, setIsLoadin] = useState(false);
     useEffect(() => {
         setIsLoadin(true);
-        fetch('http://localhost:5000/reviews').then(res => res.json()).then(data => {
+        fetch('https://infinite-plains-05304.herokuapp.com/reviews').then(res => res.json()).then(data => {
             const newData = data.slice(0, 3);
             setReviews(newData);
             setIsLoadin(false);
