@@ -10,11 +10,11 @@ const ChooseUs = () => {
                 <p>Nunc fringilla eros vitae nisl posuere, ut consectetur nulla feugiat. Nullam ut mauris vitae tortor sodales efficitur.</p>
             </div>
             <div>
-                <h1>We have experienced Doctor's.</h1>
+                <h1>We have experienced Service.</h1>
                 <p>Quisque ac orci ante. Proin sit amet turpis lobortis, imperdiet nisi ut, viverra lorem. Nullam ex massa, euismod vel metus non.</p>
             </div>
             <div>
-                <h1>We are improving everyday.</h1>
+                <h1>We are Always upgraded with our products.</h1>
                 <p>Nunc fringilla eros vitae nisl posuere, ut consectetur nulla feugiat. Nullam ut mauris vitae tortor sodales efficitur.</p>
             </div>
         </div>
