@@ -4,20 +4,20 @@ import Spinner from '../../shared/Spinner/Spinner';
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isApproved, setisApproved] = useState(false);
+
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
+
         setIsLoading(true);
         fetch('https://infinite-plains-05304.herokuapp.com/orders').then(res => res.json()).then(data => {
 
-            if (data.status === 'approved') {
-                setisApproved(true);
-            }
+
             setOrders(data);
             setIsLoading(false);
         })
     }, [isSuccess]);
     const handleApproved = (id) => {
+        setIsSuccess(false);
         setIsLoading(true);
         fetch(`https://infinite-plains-05304.herokuapp.com/orders/${id}`, {
             method: 'PUT'
@@ -29,7 +29,7 @@ const ManageOrders = () => {
         })
     }
     const handleDelete = (id) => {
-
+        setIsSuccess(false);
         const confirmation = window.confirm('Are you sure ? you want to delete');
         if (confirmation) {
             setIsLoading(true);
@@ -72,7 +72,7 @@ const ManageOrders = () => {
                                 <td className="w-1/3 text-left py-3 px-4">${order.price}</td>
                                 <td className="w-1/3 text-left py-3 px-4">{order.status}</td>
                                 <td className="text-left md:flex space-x-1 py-3 px-4">
-                                    {!isApproved && <button onClick={() => handleApproved(order._id)}>approved</button>}
+                                    <button onClick={() => handleApproved(order._id)}>approved</button>
                                     <button onClick={() => handleDelete(order._id)}>Delete</button>
                                 </td>
 

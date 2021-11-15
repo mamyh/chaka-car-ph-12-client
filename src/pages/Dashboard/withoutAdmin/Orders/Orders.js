@@ -9,7 +9,7 @@ const Orders = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
-        console.log(user.email);
+
         setIsLoading(true);
         fetch(`https://infinite-plains-05304.herokuapp.com/orders/email?email=${user.email}`).then(res => res.json()).then(data => {
             console.log(data);
@@ -19,7 +19,7 @@ const Orders = () => {
     }, [isSuccess]);
 
     const handleDelete = (id) => {
-
+        setIsSuccess(false);
         const confirmation = window.confirm('Are you sure ? you want to delete');
         if (confirmation) {
             setIsLoading(true);
